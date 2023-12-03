@@ -1,0 +1,12 @@
+<!-- module2.html -->
+<div>
+   <h2>Module 2</h2>
+   <div id="output"></div>
+</div>
+
+<script>
+   document.addEventListener('customEvent', function (event) {
+      const message = event.detail.message;
+      document.getElementById('output').innerHTML = `Received message: ${message}`;
+   });
+</script>

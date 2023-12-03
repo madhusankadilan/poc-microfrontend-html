@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Micro Frontend Host</title>
+</head>
+
+<body>
+   <h1>Micro Frontend Host</h1>
+
+   <div id="module1Container"></div>
+   <div id="module2Container"></div>
+
+   <script>
+      async function loadMicroFrontend(containerId, url) {
+         const response = await fetch(url);
+         const html = await response.text();
+         
+         const container = document.getElementById(containerId);
+         container.innerHTML = html;
+         
+         const script = document.createElement('script');
+         script.text = container.querySelector('script').text;
+         container.appendChild(script);
+      }
+
+      // Load Module 1
+      loadMicroFrontend('module1Container', 'module1.html');
+
+      // Load Module 2
+      loadMicroFrontend('module2Container', 'module2.html');
+   </script>
+</body>
+
+</html>
