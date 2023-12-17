@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Micro Frontend Host</title>
+   <style>
+      body, html {
+         min-height: 100vh;
+         margin: 0px;
+      } 
+      
+      .container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         background-color: #6495ed;
+         min-height: 100vh;
+      }
+
+      .header {
+         display: flex;
+         font-family: 'Courier New', Courier, monospace;
+         font-size: 3rem;
+         text-shadow: 2px 2px 1px #6a6767;
+      }
+
+      .content {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         flex-grow: 1;
+         padding: 1rem;
+      }
+
+      .module-container {
+         display: flex;
+         justify-content: center;
+         min-height: 40vh;
+         width: 50rem;
+         background-color: #467fe9;
+         border-radius: 3rem;
+         box-shadow: 1px 1px 10px 1px #000000;
+      }
+   </style>
 </head>
-
 <body>
-   <h1>Micro Frontend Host</h1>
-
-   <div id="module1Container"></div>
-   <div id="module2Container"></div>
-
+   <div class="container">
+      <h1 class="header">Micro Frontend Host</h1>
+      <div class="content">
+         <div id="module1Container" class="module-container"></div>
+         <div id="module2Container" class="module-container"></div>
+      </div>
+   </div>
    <script>
       async function loadMicroFrontend(containerId, url) {
          const response = await fetch(url);
